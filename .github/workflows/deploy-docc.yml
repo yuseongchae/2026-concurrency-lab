@@ -28,7 +28,6 @@ jobs:
             --fallback-display-name "console-log-experiment" \
             --fallback-bundle-identifier "com.example.console-log-experiment" \
             --fallback-default-module-kind "Command-line Tool" \
-            --hosting-base-path "2026-concurrency-lab" \
             --output-dir ".build/docc"
 
       - name: Upload Pages artifact
