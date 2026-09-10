@@ -22,17 +22,17 @@ jobs:
       - name: Build DocC
         run: |
           xcrun docc convert \
-            DocC/console-log-experiment/Sources/console-log-experiment/ConsoleLogExperiment.docc \
+            console-log-experiment/Sources/console-log-experiment/ConsoleLogExperiment.docc \
             --fallback-display-name "console-log-experiment" \
             --fallback-bundle-identifier "com.example.console-log-experiment" \
             --fallback-default-module-kind "Command-line Tool" \
             --hosting-base-path "2026-concurrency-lab" \
-            --output-dir "DocC/console-log-experiment/.build/docc"
+            --output-dir ".build/docc"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "DocC/console-log-experiment/.build/docc"
+          path: ".build/docc"
 
   deploy:
     needs: build
