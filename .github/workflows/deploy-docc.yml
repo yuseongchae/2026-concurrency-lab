@@ -17,22 +17,22 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Build DocC
         run: |
           xcrun docc convert \
-            Sources/console-log-experiment/ConsoleLogExperiment.docc \
+            DocC/console-log-experiment/Sources/console-log-experiment/ConsoleLogExperiment.docc \
             --fallback-display-name "console-log-experiment" \
             --fallback-bundle-identifier "com.example.console-log-experiment" \
             --fallback-default-module-kind "Command-line Tool" \
             --hosting-base-path "2026-concurrency-lab" \
-            --output-dir ".build/docc"
+            --output-dir "DocC/console-log-experiment/.build/docc"
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ".build/docc"
+          path: "DocC/console-log-experiment/.build/docc"
 
   deploy:
     needs: build
