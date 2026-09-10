@@ -28,24 +28,18 @@ jobs:
             --fallback-display-name "console-log-experiment" \
             --fallback-bundle-identifier "com.example.console-log-experiment" \
             --fallback-default-module-kind "Command-line Tool" \
+            --transform-for-static-hosting \
+            --hosting-base-path "2026-concurrency-lab" \
             --output-dir ".build/docc"
 
-      - name: Prepare Pages
+      - name: Check output
         run: |
-          mkdir -p .build/pages
-          cp -R .build/docc/. .build/pages/
-
-          mkdir -p .build/pages/console-log-experiment
-          cp -R .build/docc/. .build/pages/console-log-experiment/
-
-      - name: Check Pages files
-        run: |
-          find .build/pages -maxdepth 6 -type f | sort
+          find .build/docc -maxdepth 5 -type f | sort
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ".build/pages"
+          path: ".build/docc"
 
   deploy:
     needs: build
