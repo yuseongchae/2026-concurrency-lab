@@ -21,6 +21,8 @@ jobs:
 
       - name: Build DocC
         run: |
+          mkdir -p .build/docc
+
           xcrun docc convert \
             console-log-experiment/Sources/console-log-experiment/ConsoleLogExperiment.docc \
             --fallback-display-name "console-log-experiment" \
