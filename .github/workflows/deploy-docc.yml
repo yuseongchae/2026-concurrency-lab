@@ -21,8 +21,6 @@ jobs:
 
       - name: Build DocC
         run: |
-          mkdir -p .build/docc
-
           xcrun docc convert \
             console-log-experiment/Sources/console-log-experiment/ConsoleLogExperiment.docc \
             --fallback-display-name "console-log-experiment" \
@@ -34,7 +32,7 @@ jobs:
       - name: Prepare Pages
         run: |
           mkdir -p .build/pages/console-log-experiment
-          cp -R .build/docc/* .build/pages/console-log-experiment/
+          cp -R .build/docc/. .build/pages/console-log-experiment/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
